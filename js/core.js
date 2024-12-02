@@ -102,16 +102,17 @@ document.getElementById("exportBtn").addEventListener("click", () => {
   const xml = Blockly.Xml.workspaceToDom(workspace);
   const xmlText = Blockly.Xml.domToPrettyText(xml);
 
+  const currentInfo = JSON.parse(localStorage.getItem("projectInfo") || "{}");
   const exportData = {
     blocks: xmlText,
-    projectInfo: JSON.parse(localStorage.getItem("projectInfo") || "{}"),
+    projectInfo: currentInfo,
   };
 
   const blob = new Blob([JSON.stringify(exportData, null, 2)], {
     type: "application/json",
   });
   const a = document.createElement("a");
-  a.download = "blocks.json";
+  a.download = `${currentInfo.name || "blocks"}.json`;
   a.href = URL.createObjectURL(blob);
   a.click();
   URL.revokeObjectURL(a.href);
@@ -217,7 +218,7 @@ ${code}
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `${currentInfo.name}.trem`;
+  a.download = `${currentInfo.name || "project"}.trem`;
   a.click();
   URL.revokeObjectURL(url);
 }
