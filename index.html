@@ -81,7 +81,6 @@
         </category>
         <category name="文字" colour="%{BKY_TEXTS_HUE}">
             <block type="text"></block>
-            <block type="text_print"></block>
             <block type="text_join"></block>
         </category>
         <category name="變數" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
@@ -95,14 +94,68 @@
         <category name="輸出" colour="#FF6B6B">
             <block type="custom_log"></block>
         </category>
-        <category name="地圖" colour="160">
-            <block type="map_flyto"></block>
-            <block type="map_marker"></block>
-            <block type="map_style"></block>
+        <category name="地圖" colour="#27AE60">
+            <block type="map_load"></block>
+            <block type="map_init_settings">
+                <value name="LONGITUDE">
+                    <shadow type="math_number">
+                        <field name="NUM">120</field>
+                    </shadow>
+                </value>
+                <value name="LATITUDE">
+                    <shadow type="math_number">
+                        <field name="NUM">23</field>
+                    </shadow>
+                </value>
+                <value name="ZOOM">
+                    <shadow type="math_number">
+                        <field name="NUM">7</field>
+                    </shadow>
+                </value>
+                <value name="PITCH">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="BEARING">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="map_flyto">
+                <value name="LONGITUDE">
+                    <shadow type="math_number">
+                        <field name="NUM">120</field>
+                    </shadow>
+                </value>
+                <value name="LATITUDE">
+                    <shadow type="math_number">
+                        <field name="NUM">23</field>
+                    </shadow>
+                </value>
+                <value name="ZOOM">
+                    <shadow type="math_number">
+                        <field name="NUM">7</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="map_marker">
+                <value name="LONGITUDE">
+                    <shadow type="math_number">
+                        <field name="NUM">120</field>
+                    </shadow>
+                </value>
+                <value name="LATITUDE">
+                    <shadow type="math_number">
+                        <field name="NUM">23</field>
+                    </shadow>
+                </value>
+            </block>
             <block type="map_event"></block>
+            <block type="map_get_state"></block>
         </category>
     </xml>
-
     <div id="projectInfoDialog" class="mdc-dialog">
         <div class="mdc-dialog__container">
             <div class="mdc-dialog__surface">
