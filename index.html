@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Blockly JavaScript Generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.css"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./css/core.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.3.1/blockly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.3.1/blocks.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.3.1/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/9.3.1/msg/zh-hant.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/14.0.0/material-components-web.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="./js/blocks.js" defer></script>
+    <script src="./js/core.js" defer></script>
+</head>
+
+<body class="mdc-typography">
+    <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <span class="mdc-top-app-bar__title">Blockly JavaScript 產生器</span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <button class="mdc-button mdc-button--raised" id="importBtn">
+                    <span class="mdc-button__ripple"></span>
+                    <i class="material-icons mdc-button__icon">upload</i>
+                    <span class="mdc-button__label">匯入</span>
+                </button>
+                <button class="mdc-button mdc-button--raised" id="exportBtn">
+                    <span class="mdc-button__ripple"></span>
+                    <i class="material-icons mdc-button__icon">save</i>
+                    <span class="mdc-button__label">匯出積木</span>
+                </button>
+                <button class="mdc-button mdc-button--raised" id="downloadBtn">
+                    <span class="mdc-button__ripple"></span>
+                    <i class="material-icons mdc-button__icon">download</i>
+                    <span class="mdc-button__label">下載專案</span>
+                </button>
+            </section>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="content-container">
+            <div id="blocklyDiv"></div>
+            <div class="output-panel">
+                <textarea id="codeOutput" class="mdc-text-field__input" readonly></textarea>
+            </div>
+        </div>
+    </main>
+
+    <input type="file" id="importInput" accept=".xml" style="display: none">
+
+    <xml id="toolbox" style="display: none">
+        <category name="邏輯" colour="%{BKY_LOGIC_HUE}">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+        </category>
+        <category name="迴圈" colour="%{BKY_LOOPS_HUE}">
+            <block type="controls_repeat_ext"></block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_for"></block>
+        </category>
+        <category name="數學" colour="%{BKY_MATH_HUE}">
+            <block type="math_number"></block>
+            <block type="math_arithmetic"></block>
+            <block type="math_single"></block>
+        </category>
+        <category name="文字" colour="%{BKY_TEXTS_HUE}">
+            <block type="text"></block>
+            <block type="text_print"></block>
+            <block type="text_join"></block>
+        </category>
+        <category name="變數" custom="VARIABLE" colour="%{BKY_VARIABLES_HUE}">
+        </category>
+        <category name="函數" custom="PROCEDURE" colour="%{BKY_PROCEDURES_HUE}">
+        </category>
+        <category name="自訂積木" colour="#FF6B6B">
+            <block type="custom_alert"></block>
+            <block type="custom_log"></block>
+            <block type="custom_wait"></block>
+        </category>
+    </xml>
+</body>
+
+</html>
