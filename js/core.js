@@ -75,12 +75,18 @@ document.getElementById("downloadBtn").addEventListener("click", async () => {
     return;
   }
 
+  const wrappedCode = `module.exports = function (ctx) {
+  const { TREM, logger, MixinManager } = ctx;
+  
+${code}
+}`;
+
   const zip = new JSZip();
-  zip.file("script.js", code);
+  zip.file("script.js", wrappedCode);
 
   const indexContent = `module.exports = function (ctx) {
   ctx.on("load", () => {
-    require("./script")
+    require("./script")(ctx)
   });
 };`;
 
@@ -94,3 +100,18 @@ document.getElementById("downloadBtn").addEventListener("click", async () => {
   a.click();
   URL.revokeObjectURL(url);
 });
+
+function requireJs(url) {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load script: ${url}`));
+
+    document.head.appendChild(script);
+  });
+}
+
+window.requireJs = requireJs;
