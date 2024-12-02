@@ -21,9 +21,17 @@
     <header class="mdc-top-app-bar mdc-top-app-bar--fixed">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <span class="mdc-top-app-bar__title">TREM Plugin 製作 v0.0.1</span>
+                <span class="mdc-top-app-bar__title">
+                    <div class="main-title">TREM Plugin 製作 v0.0.1</div>
+                    <div class="sub-title"></div>
+                </span>
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <button id="settingsBtn" class="mdc-button mdc-button--raised">
+                    <span class="mdc-button__ripple"></span>
+                    <i class="material-icons mdc-button__icon">settings</i>
+                    <span class="mdc-button__label">專案設定</span>
+                </button>
                 <button class="mdc-button mdc-button--raised" id="importBtn">
                     <span class="mdc-button__ripple"></span>
                     <i class="material-icons mdc-button__icon">upload</i>
@@ -47,12 +55,12 @@
         <div class="content-container">
             <div id="blocklyDiv"></div>
             <div class="output-panel">
-                <textarea id="codeOutput" class="mdc-text-field__input" readonly></textarea>
+                <textarea id="codeOutput" readonly></textarea>
             </div>
         </div>
     </main>
 
-    <input type="file" id="importInput" accept=".xml" style="display: none">
+    <input type="file" id="importInput" accept=".json" style="display: none">
 
     <xml id="toolbox" style="display: none">
         <category name="邏輯" colour="%{BKY_LOGIC_HUE}">
@@ -87,6 +95,55 @@
             <block type="custom_log"></block>
         </category>
     </xml>
+
+    <div id="projectInfoDialog" class="mdc-dialog">
+        <div class="mdc-dialog__container">
+            <div class="mdc-dialog__surface">
+                <h2 class="mdc-dialog__title">專案資訊設定</h2>
+                <div class="mdc-dialog__content">
+                    <label class="mdc-text-field mdc-text-field--filled" for="projectName">
+                        <span class="mdc-text-field__ripple"></span>
+                        <span class="mdc-floating-label">專案名稱</span>
+                        <input id="projectName" class="mdc-text-field__input" type="text" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+
+                    <label class="mdc-text-field mdc-text-field--filled" for="projectVersion">
+                        <span class="mdc-text-field__ripple"></span>
+                        <span class="mdc-floating-label">版本</span>
+                        <input id="projectVersion" class="mdc-text-field__input" type="text" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+
+                    <label class="mdc-text-field mdc-text-field--filled" for="projectAuthor">
+                        <span class="mdc-text-field__ripple"></span>
+                        <span class="mdc-floating-label">作者</span>
+                        <input id="projectAuthor" class="mdc-text-field__input" type="text" required>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+
+                    <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea"
+                        for="projectDescription">
+                        <span class="mdc-text-field__ripple"></span>
+                        <span class="mdc-floating-label">說明</span>
+                        <textarea id="projectDescription" class="mdc-text-field__input" rows="5" required></textarea>
+                        <span class="mdc-line-ripple"></span>
+                    </label>
+                </div>
+                <div class="mdc-dialog__actions">
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
+                        <span class="mdc-button__ripple"></span>
+                        <span class="mdc-button__label">取消</span>
+                    </button>
+                    <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">
+                        <span class="mdc-button__ripple"></span>
+                        <span class="mdc-button__label">確認</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="mdc-dialog__scrim"></div>
+    </div>
 </body>
 
 </html>

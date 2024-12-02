@@ -59,3 +59,90 @@ body {
 .mdc-top-app-bar__section--align-end {
   padding-right: 16px;
 }
+
+/* Dialog 樣式 */
+.mdc-dialog .mdc-dialog__surface {
+  min-width: 400px;
+  padding: 0;
+}
+
+.mdc-dialog .mdc-dialog__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 24px;
+}
+
+.mdc-dialog .mdc-text-field {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  margin: 0;
+  position: relative;
+}
+
+.mdc-dialog .mdc-text-field .mdc-text-field__input {
+  width: 100%;
+  height: calc(100% - 16px);
+  margin: 0;
+  padding: 16px 16px 0;
+  border: none;
+  background: none;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.mdc-dialog .mdc-text-field--textarea {
+  height: auto;
+  min-height: 120px;
+}
+
+.mdc-dialog .mdc-text-field--textarea .mdc-text-field__input {
+  height: auto;
+  min-height: 100px;
+  padding: 26px 16px 16px;
+  resize: vertical;
+}
+
+.mdc-dialog .mdc-text-field .mdc-floating-label {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  transform: translateY(-50%) scale(0.75);
+  transform-origin: left top;
+  pointer-events: none;
+}
+
+.mdc-dialog .mdc-text-field .mdc-line-ripple {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mdc-dialog .mdc-dialog__title {
+  padding: 24px 24px 0;
+  margin: 0;
+}
+
+.mdc-dialog .mdc-dialog__actions {
+  padding: 8px 24px 24px;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.mdc-top-app-bar__title {
+  display: flex;
+  flex-direction: column;
+}
+
+.mdc-top-app-bar__title .main-title {
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.mdc-top-app-bar__title .sub-title {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
