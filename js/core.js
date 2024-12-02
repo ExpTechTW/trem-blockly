@@ -112,7 +112,9 @@ document.getElementById("exportBtn").addEventListener("click", () => {
     type: "application/json",
   });
   const a = document.createElement("a");
-  a.download = `${currentInfo.name || "blocks"}.json`;
+  a.download = `${currentInfo.name || "blocks"}-v${
+    currentInfo.version || "X.X.X"
+  }.json`;
   a.href = URL.createObjectURL(blob);
   a.click();
   URL.revokeObjectURL(a.href);
